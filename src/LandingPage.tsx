@@ -8,7 +8,6 @@ type Link = {
 
 const LINKS: Link[] = [
   { label: '立即体验（Web）', href: 'https://web.xiuper.com/', variant: 'primary' },
-  { label: '打开 Web UI（本仓库 /#/app）', href: '#/app', variant: 'secondary' },
   { label: 'GitHub（源码）', href: 'https://github.com/phodal/xuiper.com', variant: 'ghost' },
 ];
 
@@ -75,7 +74,7 @@ export const LandingPage: React.FC = () => {
               <h1 className="xu-hero__title">
                 面向 AI4SDLC 的
                 <br />
-                全平台开发助理与 Coding Agent
+                全平台开发助理与 Agents（ChatDB, WebEdit, Knowledge Agent, Code Review, Testing(comming soon)）
               </h1>
               <p className="xu-hero__subtitle">
                 基于 Kotlin Multiplatform 与 Compose Multiplatform，覆盖 IDE、桌面、移动端、Web、CLI。
@@ -113,6 +112,21 @@ export const LandingPage: React.FC = () => {
           </div>
         </section>
 
+        <section id="platforms" className="xu-section xu-section--alt">
+          <div className="xu-container">
+            <h2 className="xu-section__title">平台覆盖</h2>
+            <p className="xu-section__desc">从编辑器到终端，从桌面到移动端，一套核心能力多端复用。</p>
+            <div className="xu-grid xu-grid--platforms">
+              {PLATFORM_LIST.map((p) => (
+                <div key={p.name} className="xu-card xu-card--platform">
+                  <div className="xu-card__title">{p.name}</div>
+                  <div className="xu-card__desc">{p.note}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+        
         <section id="features" className="xu-section">
           <div className="xu-container">
             <h2 className="xu-section__title">关键特性</h2>
@@ -124,21 +138,6 @@ export const LandingPage: React.FC = () => {
                 <div key={f.title} className="xu-card">
                   <div className="xu-card__title">{f.title}</div>
                   <div className="xu-card__desc">{f.desc}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="platforms" className="xu-section xu-section--alt">
-          <div className="xu-container">
-            <h2 className="xu-section__title">平台覆盖</h2>
-            <p className="xu-section__desc">从编辑器到终端，从桌面到移动端，一套核心能力多端复用。</p>
-            <div className="xu-grid xu-grid--platforms">
-              {PLATFORM_LIST.map((p) => (
-                <div key={p.name} className="xu-card xu-card--platform">
-                  <div className="xu-card__title">{p.name}</div>
-                  <div className="xu-card__desc">{p.note}</div>
                 </div>
               ))}
             </div>
