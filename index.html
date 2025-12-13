@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xuiper · AutoDev 3.0</title>
+    <meta name="description" content="Xuiper（AutoDev 3.0）：面向 AI4SDLC 的全平台开发助理与 Coding Agent。覆盖 IDE、桌面、移动端、Web、CLI。" />
+    <meta name="theme-color" content="#0b1020" />
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Xuiper" />
+    <meta property="og:title" content="Xuiper · AutoDev 3.0" />
+    <meta property="og:description" content="面向 AI4SDLC 的全平台开发助理与 Coding Agent。覆盖 IDE、桌面、移动端、Web、CLI。" />
+    <meta property="og:type" content="website" />
+
+    <!-- Minimal text-only favicon (SVG data URI) -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%236366f1'/%3E%3Cstop offset='1' stop-color='%23ec4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%230b1020'/%3E%3Cpath d='M18 18 L46 46 M46 18 L18 46' stroke='url(%23g)' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E"
+    />
+    <style>
+      /* Xuiper Loading Animation - Rocket through X */
+      #xuiper-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(ellipse at center, #1a1a2e 0%, #0f0f1a 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        opacity: 1;
+        transition: opacity 0.4s ease-out;
+      }
+      #xuiper-loader.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .loader-container {
+        position: relative;
+        width: 200px;
+        height: 200px;
+      }
+
+      /* X mark - glows when rocket passes */
+      .x-mark {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80px;
+        height: 80px;
+      }
+      .x-mark::before,
+      .x-mark::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #6366f1, #ec4899);
+        border-radius: 2px;
+        box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+        animation: x-glow 2.5s ease-in-out infinite;
+      }
+      .x-mark::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+      .x-mark::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+
+      @keyframes x-glow {
+        0%, 30% {
+          box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+          filter: brightness(0.7);
+        }
+        40%, 60% {
+          box-shadow: 0 0 30px rgba(236, 72, 153, 0.8), 0 0 60px rgba(99, 102, 241, 0.6);
+          filter: brightness(1.3);
+        }
+        70%, 100% {
+          box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+          filter: brightness(0.7);
+        }
+      }
+
+      /* Rocket */
+      .rocket {
+        position: absolute;
+        top: 50%;
+        left: -30px;
+        transform: translateY(-50%);
+        width: 24px;
+        height: 8px;
+        animation: rocket-fly 2.5s ease-in-out infinite;
+      }
+      .rocket-body {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, #ec4899, #6366f1, #fff);
+        border-radius: 4px 8px 8px 4px;
+        box-shadow: 0 0 15px rgba(236, 72, 153, 0.8);
+      }
+      .rocket-head {
+        position: absolute;
+        right: -6px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0;
+        height: 0;
+        border-left: 10px solid #fff;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+      }
+
+      /* Fire trail */
+      .fire-trail {
+        position: absolute;
+        top: 50%;
+        right: 100%;
+        transform: translateY(-50%);
+        width: 60px;
+        height: 6px;
+        background: linear-gradient(90deg, transparent, rgba(236, 72, 153, 0.3), rgba(236, 72, 153, 0.7));
+        border-radius: 3px;
+        animation: fire-flicker 0.1s ease-in-out infinite alternate;
+      }
+      .fire-trail::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        right: 0;
+        width: 40px;
+        height: 10px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.5));
+        border-radius: 5px;
+      }
+
+      @keyframes rocket-fly {
+        0% { left: -40px; }
+        100% { left: 220px; }
+      }
+
+      @keyframes fire-flicker {
+        0% { opacity: 0.8; width: 55px; }
+        100% { opacity: 1; width: 65px; }
+      }
+
+      /* Energy burst when rocket passes X */
+      .energy-burst {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 2px solid rgba(236, 72, 153, 0.8);
+        animation: burst 2.5s ease-out infinite;
+        opacity: 0;
+      }
+      .energy-burst:nth-child(2) { animation-delay: 0.1s; }
+      .energy-burst:nth-child(3) { animation-delay: 0.2s; }
+
+      @keyframes burst {
+        0%, 35% {
+          width: 20px;
+          height: 20px;
+          opacity: 0;
+        }
+        40% {
+          width: 20px;
+          height: 20px;
+          opacity: 0.9;
+        }
+        70% {
+          width: 150px;
+          height: 150px;
+          opacity: 0;
+        }
+        100% {
+          width: 150px;
+          height: 150px;
+          opacity: 0;
+        }
+      }
+
+      /* Sparks */
+      .spark {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: #fff;
+        opacity: 0;
+        animation: spark 2.5s ease-out infinite;
+      }
+      .spark:nth-child(1) { top: 50%; left: 50%; animation-delay: 0.4s; }
+      .spark:nth-child(2) { top: 30%; left: 60%; animation-delay: 0.45s; }
+      .spark:nth-child(3) { top: 70%; left: 60%; animation-delay: 0.42s; }
+      .spark:nth-child(4) { top: 40%; left: 40%; animation-delay: 0.48s; }
+      .spark:nth-child(5) { top: 60%; left: 40%; animation-delay: 0.44s; }
+      .spark:nth-child(6) { top: 35%; left: 50%; animation-delay: 0.46s; }
+      .spark:nth-child(7) { top: 65%; left: 50%; animation-delay: 0.43s; }
+      .spark:nth-child(8) { top: 50%; left: 35%; animation-delay: 0.47s; }
+
+      @keyframes spark {
+        0%, 38% {
+          opacity: 0;
+          transform: translate(0, 0) scale(1);
+        }
+        40% {
+          opacity: 1;
+          transform: translate(0, 0) scale(1);
+        }
+        70% {
+          opacity: 0;
+          transform: translate(calc((var(--dx, 0) * 40px)), calc((var(--dy, 0) * 40px))) scale(0.5);
+        }
+        100% { opacity: 0; }
+      }
+      .spark:nth-child(1) { --dx: 1; --dy: 0; }
+      .spark:nth-child(2) { --dx: 0.7; --dy: -0.7; }
+      .spark:nth-child(3) { --dx: 0.7; --dy: 0.7; }
+      .spark:nth-child(4) { --dx: -0.7; --dy: -0.5; }
+      .spark:nth-child(5) { --dx: -0.7; --dy: 0.5; }
+      .spark:nth-child(6) { --dx: 0; --dy: -1; }
+      .spark:nth-child(7) { --dx: 0; --dy: 1; }
+      .spark:nth-child(8) { --dx: -1; --dy: 0; }
+
+      /* Text */
+      .loader-text {
+        margin-top: 40px;
+        text-align: center;
+      }
+      .loader-title {
+        font-family: system-ui, -apple-system, sans-serif;
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #fff;
+        margin-bottom: 8px;
+        text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+      }
+      .loader-slogan {
+        font-family: system-ui, -apple-system, sans-serif;
+        font-size: 1rem;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.7);
+        letter-spacing: 2px;
+        margin-bottom: 15px;
+      }
+      .loader-subtitle {
+        font-family: system-ui, -apple-system, sans-serif;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.6);
+        letter-spacing: 2px;
+      }
+      .loading-dots::after {
+        content: '';
+        animation: dots 1.5s steps(4, end) infinite;
+      }
+      @keyframes dots {
+        0% { content: ''; }
+        25% { content: '.'; }
+        50% { content: '..'; }
+        75% { content: '...'; }
+        100% { content: ''; }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Xuiper Loading Animation -->
+    <div id="xuiper-loader">
+      <div class="loader-container">
+        <!-- Energy burst rings -->
+        <div class="energy-burst"></div>
+        <div class="energy-burst"></div>
+        <div class="energy-burst"></div>
+
+        <!-- Sparks -->
+        <div class="spark"></div>
+        <div class="spark"></div>
+        <div class="spark"></div>
+        <div class="spark"></div>
+        <div class="spark"></div>
+        <div class="spark"></div>
+        <div class="spark"></div>
+        <div class="spark"></div>
+
+        <!-- X mark -->
+        <div class="x-mark"></div>
+
+        <!-- Rocket -->
+        <div class="rocket">
+          <div class="fire-trail"></div>
+          <div class="rocket-body"></div>
+          <div class="rocket-head"></div>
+        </div>
+      </div>
+
+      <div class="loader-text">
+        <div class="loader-title">Xuiper</div>
+        <div class="loader-slogan">X =&gt; Super open, Xiuper build.</div>
+        <div class="loader-subtitle">Loading<span class="loading-dots"></span></div>
+      </div>
+    </div>
+
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Hide loader when app is ready
+      window.addEventListener('load', function() {
+        // Give React a moment to render
+        setTimeout(function() {
+          var loader = document.getElementById('xuiper-loader');
+          if (loader) {
+            loader.classList.add('fade-out');
+            setTimeout(function() {
+              loader.style.display = 'none';
+            }, 400);
+          }
+        }, 500);
+      });
+    </script>
+  </body>
+</html>
+
