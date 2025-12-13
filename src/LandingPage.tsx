@@ -1,16 +1,5 @@
 import React from 'react';
 
-type Link = {
-  label: string;
-  href: string;
-  variant?: 'primary' | 'secondary' | 'ghost';
-};
-
-const LINKS: Link[] = [
-  { label: '立即体验（Web）', href: 'https://web.xiuper.com/', variant: 'primary' },
-  { label: 'GitHub（源码）', href: 'https://github.com/phodal/xuiper.com', variant: 'ghost' },
-];
-
 const FEATURE_LIST: Array<{ title: string; desc: string }> = [
   { title: '全平台 AI Agent', desc: '一套核心逻辑，多端复用：Desktop、Android、iOS、Web、CLI、IDE 插件。' },
   { title: '多模型支持', desc: '支持 OpenAI / Anthropic / Google / DeepSeek / Ollama / OpenRouter 等。' },
@@ -31,21 +20,6 @@ const PLATFORM_LIST: Array<{ name: string; note: string }> = [
   { name: 'Server', note: 'Ktor（可选）' },
 ];
 
-function ButtonLink({ label, href, variant = 'secondary' }: Link) {
-  const className = ['xu-btn', `xu-btn--${variant}`].join(' ');
-  const isExternal = /^https?:\/\//.test(href);
-  return (
-    <a
-      className={className}
-      href={href}
-      target={isExternal ? '_blank' : undefined}
-      rel={isExternal ? 'noreferrer' : undefined}
-    >
-      {label}
-    </a>
-  );
-}
-
 export const LandingPage: React.FC = () => {
   return (
     <div className="xu-page">
@@ -57,8 +31,7 @@ export const LandingPage: React.FC = () => {
           </a>
           <nav className="xu-nav">
             <a className="xu-nav__link" href="#features">特性</a>
-            <a className="xu-nav__link" href="#platforms">平台</a>
-            <a className="xu-nav__link" href="#start">开始使用</a>
+            <a className="xu-nav__link" href="#platforms">平台与使用</a>
             <a className="xu-nav__link" href="https://github.com/phodal/auto-dev" target="_blank" rel="noreferrer">
               GitHub
             </a>
@@ -80,23 +53,6 @@ export const LandingPage: React.FC = () => {
                 基于 Kotlin Multiplatform 与 Compose Multiplatform，覆盖 IDE、桌面、移动端、Web、CLI。
                 让 AI Agent 真正进入你的工程化工作流。
               </p>
-              <div className="xu-hero__cta">
-                {LINKS.map((l) => (
-                  <ButtonLink key={l.label} {...l} />
-                ))}
-              </div>
-              <div className="xu-hero__meta">
-                <div className="xu-kv">
-                  <div className="xu-kv__k">CLI 安装</div>
-                  <div className="xu-kv__v">
-                    <code>npm install -g @autodev/cli</code>
-                  </div>
-                </div>
-                <div className="xu-kv">
-                  <div className="xu-kv__k">License</div>
-                  <div className="xu-kv__v">MPL 2.0</div>
-                </div>
-              </div>
             </div>
 
             <div className="xu-hero__visual" aria-hidden="true">
@@ -114,40 +70,8 @@ export const LandingPage: React.FC = () => {
 
         <section id="platforms" className="xu-section xu-section--alt">
           <div className="xu-container">
-            <h2 className="xu-section__title">平台覆盖</h2>
-            <p className="xu-section__desc">从编辑器到终端，从桌面到移动端，一套核心能力多端复用。</p>
-            <div className="xu-grid xu-grid--platforms">
-              {PLATFORM_LIST.map((p) => (
-                <div key={p.name} className="xu-card xu-card--platform">
-                  <div className="xu-card__title">{p.name}</div>
-                  <div className="xu-card__desc">{p.note}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-        
-        <section id="features" className="xu-section">
-          <div className="xu-container">
-            <h2 className="xu-section__title">关键特性</h2>
-            <p className="xu-section__desc">
-              Landing 文案基于本仓库 `mpp-ui`/`mpp-web` 的 README 及实现：多端一致、可扩展、面向真实工程。
-            </p>
-            <div className="xu-grid">
-              {FEATURE_LIST.map((f) => (
-                <div key={f.title} className="xu-card">
-                  <div className="xu-card__title">{f.title}</div>
-                  <div className="xu-card__desc">{f.desc}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="start" className="xu-section">
-          <div className="xu-container">
-            <h2 className="xu-section__title">开始使用</h2>
-            <p className="xu-section__desc">根据你的工作场景，选择合适的平台快速上手 Xuiper。</p>
+            <h2 className="xu-section__title">平台与使用</h2>
+            <p className="xu-section__desc">从编辑器到终端，从桌面到移动端，选择适合你的平台快速上手。</p>
             
             <div className="xu-platform-guide">
               <details className="xu-guide-item" open>
@@ -204,7 +128,6 @@ export const LandingPage: React.FC = () => {
                   <p>无需安装，直接打开浏览器访问：</p>
                   <ul>
                     <li>官方 Web UI：<a href="https://web.xiuper.com/" target="_blank" rel="noreferrer">web.xiuper.com</a></li>
-                    <li>本站内置演示：<a href="#/app">/#/app</a></li>
                   </ul>
                   <p>在设置中配置 LLM provider 和 API key 后即可使用。</p>
                 </div>
@@ -273,6 +196,24 @@ export const LandingPage: React.FC = () => {
             </div>
           </div>
         </section>
+        
+        <section id="features" className="xu-section">
+          <div className="xu-container">
+            <h2 className="xu-section__title">关键特性</h2>
+            <p className="xu-section__desc">
+              Landing 文案基于本仓库 `mpp-ui`/`mpp-web` 的 README 及实现：多端一致、可扩展、面向真实工程。
+            </p>
+            <div className="xu-grid">
+              {FEATURE_LIST.map((f) => (
+                <div key={f.title} className="xu-card">
+                  <div className="xu-card__title">{f.title}</div>
+                  <div className="xu-card__desc">{f.desc}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
       </main>
 
       <footer className="xu-footer">
