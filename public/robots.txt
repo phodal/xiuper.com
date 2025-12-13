@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.xuiper.com/sitemap.xml
+Sitemap: https://www.xiuper.com/sitemap.xml
 
 

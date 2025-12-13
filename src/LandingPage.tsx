@@ -19,7 +19,7 @@ const PLATFORM_LIST: Array<{ name: string; note: string; icon: string; link?: st
   },
   { 
     name: 'VSCode', 
-    note: 'Xuiper Agent（扩展）',
+    note: 'Xiuper Agent（扩展）',
     icon: '📝',
     link: 'https://marketplace.visualstudio.com/items?itemName=Phodal.autodev',
     usage: 'Marketplace 搜索 "AutoDev"'
@@ -73,7 +73,7 @@ export const LandingPage: React.FC = () => {
         <div className="xu-container xu-header__inner">
           <a className="xu-brand" href="#/">
             <span className="xu-brand__mark" aria-hidden="true">X</span>
-            <span className="xu-brand__text">Xuiper</span>
+            <span className="xu-brand__text">Xiuper</span>
           </a>
           <nav className="xu-nav">
             <a className="xu-nav__link" href="#features">特性</a>
@@ -199,11 +199,11 @@ export const LandingPage: React.FC = () => {
       <footer className="xu-footer">
         <div className="xu-container xu-footer__inner">
           <div className="xu-footer__left">
-            <div className="xu-footer__brand">Xuiper</div>
+            <div className="xu-footer__brand">Xiuper</div>
             <div className="xu-footer__meta">AutoDev 3.0 · MPL 2.0</div>
           </div>
           <div className="xu-footer__right">
-            <a className="xu-footer__link" href="https://github.com/phodal/xuiper.com" target="_blank" rel="noreferrer">
+            <a className="xu-footer__link" href="https://github.com/phodal/xiuper.com" target="_blank" rel="noreferrer">
               GitHub
             </a>
             <a className="xu-footer__link" href="https://web.xiuper.com/" target="_blank" rel="noreferrer">
