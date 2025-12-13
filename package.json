@@ -15,7 +15,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@autodev/mpp-core": "file:../mpp-core/build/dist/js/productionLibrary",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

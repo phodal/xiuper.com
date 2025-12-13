@@ -7,10 +7,7 @@ export default defineConfig({
   root: './',
   publicDir: 'public',
   resolve: {
-    alias: {
-      // Browser polyfills for Node.js modules used by Kotlin/JS dependencies
-      'ws': path.resolve(__dirname, 'src/polyfills/ws-polyfill.ts'),
-    },
+    alias: {},
   },
   build: {
     outDir: 'dist',
@@ -28,9 +25,7 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    include: ['@autodev/mpp-core'],
     esbuildOptions: {
-      // Define empty modules for Node.js-only dependencies
       define: {
         global: 'globalThis',
       },

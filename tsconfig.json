@@ -15,9 +15,7 @@
     "rootDir": "./src",
     "declaration": true,
     "sourceMap": true,
-    "paths": {
-      "@autodev/mpp-core": ["../mpp-core/build/js/packages/mpp-core/kotlin/mpp-core.mjs"]
-    }
+    "paths": {}
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
