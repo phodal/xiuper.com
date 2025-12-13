@@ -47,12 +47,38 @@ export const LandingPage: React.FC = () => {
               <h1 className="xu-hero__title">
                 面向 AI4SDLC 的
                 <br />
-                全平台开发助理与 Agents（ChatDB, WebEdit, Knowledge Agent, Code Review, Testing(comming soon)）
+                全平台开发助理与 AI Agents
               </h1>
               <p className="xu-hero__subtitle">
                 基于 Kotlin Multiplatform 与 Compose Multiplatform，覆盖 IDE、桌面、移动端、Web、CLI。
                 让 AI Agent 真正进入你的工程化工作流。
               </p>
+              
+              <div className="xu-sdlc-pipeline">
+                <div className="xu-pipeline-item">
+                  <div className="xu-pipeline-icon">📚</div>
+                  <div className="xu-pipeline-label">Knowledge Agent</div>
+                  <div className="xu-pipeline-sub">需求理解</div>
+                </div>
+                <div className="xu-pipeline-arrow">→</div>
+                <div className="xu-pipeline-item">
+                  <div className="xu-pipeline-icon">💻</div>
+                  <div className="xu-pipeline-label">ChatDB / WebEdit</div>
+                  <div className="xu-pipeline-sub">智能编码</div>
+                </div>
+                <div className="xu-pipeline-arrow">→</div>
+                <div className="xu-pipeline-item">
+                  <div className="xu-pipeline-icon">🔍</div>
+                  <div className="xu-pipeline-label">Code Review</div>
+                  <div className="xu-pipeline-sub">质量保障</div>
+                </div>
+                <div className="xu-pipeline-arrow">→</div>
+                <div className="xu-pipeline-item xu-pipeline-item--coming">
+                  <div className="xu-pipeline-icon">🧪</div>
+                  <div className="xu-pipeline-label">Testing</div>
+                  <div className="xu-pipeline-sub">Coming Soon</div>
+                </div>
+              </div>
             </div>
 
             <div className="xu-hero__visual" aria-hidden="true">
