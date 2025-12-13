@@ -60,7 +60,7 @@ export const LandingPage: React.FC = () => {
             <a className="xu-nav__link" href="#features">特性</a>
             <a className="xu-nav__link" href="#platforms">平台</a>
             <a className="xu-nav__link" href="#start">开始使用</a>
-            <a className="xu-nav__link" href="https://github.com/phodal/xuiper.com" target="_blank" rel="noreferrer">
+            <a className="xu-nav__link" href="https://github.com/phodal/auto-dev" target="_blank" rel="noreferrer">
               GitHub
             </a>
           </nav>
