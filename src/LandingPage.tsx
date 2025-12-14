@@ -16,7 +16,7 @@ const SDLC_AGENTS: Array<{
     displayName: 'Knowledge',
     sdlcPhase: 'Requirements',
     desc: '需求理解与知识构建，AI 原生的文档阅读和分析能力。',
-    caps: 'RAG / Embedding / Context',
+    caps: 'DocQL / DocQL / Context Engineering',
     status: 'stable'
   },
   {
@@ -24,7 +24,7 @@ const SDLC_AGENTS: Array<{
     displayName: 'Coding',
     sdlcPhase: 'Development',
     desc: '自主编码代理，具备完整的文件系统、Shell 和工具访问能力。',
-    caps: 'File / Shell / MCP',
+    caps: 'MCP / SubAgents / DevIns DSL',
     status: 'stable'
   },
   {
@@ -32,7 +32,7 @@ const SDLC_AGENTS: Array<{
     displayName: 'Review',
     sdlcPhase: 'Code Review',
     desc: '专业代码审查，分析代码质量、安全性、性能和最佳实践。',
-    caps: 'Git / Linter / AutoFix',
+    caps: 'Linter / Summary / AutoFix',
     status: 'stable'
   },
   {
@@ -40,7 +40,7 @@ const SDLC_AGENTS: Array<{
     displayName: 'Testing',
     sdlcPhase: 'Testing',
     desc: '自动化测试代理，生成测试用例、执行测试、分析覆盖率。',
-    caps: 'Unit / E2E / Coverage',
+    caps: 'E2E / Self-healing / Coverage',
     status: 'coming'
   },
   {
@@ -48,7 +48,7 @@ const SDLC_AGENTS: Array<{
     displayName: 'ChatDB',
     sdlcPhase: 'Data',
     desc: '数据库对话代理，支持 Text-to-SQL，自然语言查询数据。',
-    caps: 'SQL / Schema / Query',
+    caps: 'Schema Linking / Multi-DB / Query',
     status: 'stable'
   },
   {
@@ -56,7 +56,7 @@ const SDLC_AGENTS: Array<{
     displayName: 'WebEdit',
     sdlcPhase: 'Deployment',
     desc: '网页编辑代理，浏览网页、选择 DOM 元素、与页面交互。',
-    caps: 'DOM / Browser / Mapping',
+    caps: 'Inspect / Chat / Mapping',
     status: 'beta'
   },
   {
