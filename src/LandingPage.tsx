@@ -141,6 +141,7 @@ const ALL_PLATFORMS = [
     target: 'JVM',
     desc: 'Self-hosted Server',
     usage: 'Self-hosted',
+    link: 'https://github.com/phodal/auto-dev/releases',
     featured: false
   },
 ];
@@ -179,10 +180,12 @@ export const LandingPage: React.FC = () => {
             <div className="xu-hero__top">
               <p className="xu-badge">AutoDev 3.0 - Xiuper</p>
               <h1 className="xu-hero__title">
-                <span className="xu-hero__slogan">One Platform, All Phases, Every Device.</span>
+                <span className="xu-hero__slogan">One Platform.</span>
+                <span className="xu-hero__slogan">All Phases.</span>
+                <span className="xu-hero__slogan">Every Device.</span>
               </h1>
               <p className="xu-hero__subtitle">
-                Kotlin Multiplatform AI Agent Framework · 统一平台，覆盖 SDLC 全阶段，运行于所有设备
+                一套代码，全生命周期，随处运行
               </p>
             </div>
 
@@ -264,7 +267,7 @@ export const LandingPage: React.FC = () => {
                   <div className="xu-platform-card__footer">
                     {platform.link && (
                       <a href={platform.link} target="_blank" rel="noreferrer" className="xu-platform-card__link">
-                        Open →
+                        Download →
                       </a>
                     )}
                     {platform.usage && !platform.link && (
