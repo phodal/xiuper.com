@@ -202,9 +202,45 @@ export const LandingPage: React.FC = () => {
         {/* Platforms Section */}
         <section id="platforms" className="xu-section">
           <div className="xu-container">
-            <h2 className="xu-section__title">Kotlin Multiplatform</h2>
-            <p className="xu-section__desc">一套核心逻辑，8 个平台复用</p>
+            <h2 className="xu-section__title">Kotlin Multiplatform 架构</h2>
+            <p className="xu-section__desc">
+              基于 expect/actual 模式的跨平台实现，共享核心逻辑，平台特定优化
+            </p>
 
+            {/* Architecture Overview */}
+            <div className="xu-kmp-arch">
+              <div className="xu-kmp-layer xu-kmp-layer--common">
+                <div className="xu-kmp-layer__label">commonMain</div>
+                <div className="xu-kmp-layer__desc">
+                  共享代码 · Agent 核心 · DevIns 语言 · MCP 协议 · YAML 工具
+                </div>
+              </div>
+              <div className="xu-kmp-arrow-down" />
+              <div className="xu-kmp-targets">
+                <div className="xu-kmp-target">
+                  <div className="xu-kmp-target__name">JVM</div>
+                  <div className="xu-kmp-target__impl">Platform.jvm.kt</div>
+                </div>
+                <div className="xu-kmp-target">
+                  <div className="xu-kmp-target__name">Android</div>
+                  <div className="xu-kmp-target__impl">Platform.android.kt</div>
+                </div>
+                <div className="xu-kmp-target">
+                  <div className="xu-kmp-target__name">iOS</div>
+                  <div className="xu-kmp-target__impl">Platform.ios.kt</div>
+                </div>
+                <div className="xu-kmp-target">
+                  <div className="xu-kmp-target__name">JS</div>
+                  <div className="xu-kmp-target__impl">Platform.js.kt</div>
+                </div>
+                <div className="xu-kmp-target">
+                  <div className="xu-kmp-target__name">WASM</div>
+                  <div className="xu-kmp-target__impl">Platform.wasm.kt</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Platform Details */}
             <div className="xu-platforms">
               {PLATFORM_CATEGORIES.map((cat) => (
                 <div key={cat.category} className={`xu-platform-group ${cat.highlight ? 'xu-platform-group--highlight' : ''}`}>
@@ -227,6 +263,38 @@ export const LandingPage: React.FC = () => {
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Technical Highlights */}
+            <div className="xu-tech-highlights">
+              <div className="xu-tech-card">
+                <div className="xu-tech-card__icon">🎯</div>
+                <div className="xu-tech-card__title">expect/actual</div>
+                <div className="xu-tech-card__desc">
+                  平台抽象机制，commonMain 定义接口，各平台实现细节
+                </div>
+              </div>
+              <div className="xu-tech-card">
+                <div className="xu-tech-card__icon">🔧</div>
+                <div className="xu-tech-card__title">Ktor Client</div>
+                <div className="xu-tech-card__desc">
+                  多引擎支持：OkHttp (JVM/Android) · Darwin (iOS) · JS Engine
+                </div>
+              </div>
+              <div className="xu-tech-card">
+                <div className="xu-tech-card__icon">📦</div>
+                <div className="xu-tech-card__title">Compose UI</div>
+                <div className="xu-tech-card__desc">
+                  声明式 UI，Desktop/Android/iOS 共享组件，平台特定适配
+                </div>
+              </div>
+              <div className="xu-tech-card">
+                <div className="xu-tech-card__icon">🌐</div>
+                <div className="xu-tech-card__title">TypeScript 互操作</div>
+                <div className="xu-tech-card__desc">
+                  自动生成 .d.ts 定义，UMD 模块格式，Node.js/Browser 双支持
+                </div>
+              </div>
             </div>
           </div>
         </section>
