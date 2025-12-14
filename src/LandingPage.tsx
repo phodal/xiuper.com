@@ -6,7 +6,7 @@ const SDLC_AGENTS: Array<{
   displayName: string;
   sdlcPhase: string;
   desc: string;
-  capabilities: string[];
+  caps: string;
   status: 'stable' | 'beta' | 'coming';
 }> = [
   {
@@ -14,7 +14,7 @@ const SDLC_AGENTS: Array<{
     displayName: 'Knowledge',
     sdlcPhase: 'Requirements',
     desc: '需求理解与知识构建，AI 原生的文档阅读和分析能力。',
-    capabilities: ['Doc Reader', 'RAG', 'Embedding', 'Context Build'],
+    caps: 'RAG / Embedding / Context',
     status: 'stable'
   },
   {
@@ -22,7 +22,7 @@ const SDLC_AGENTS: Array<{
     displayName: 'Coding',
     sdlcPhase: 'Development',
     desc: '自主编码代理，具备完整的文件系统、Shell 和工具访问能力。',
-    capabilities: ['File R/W', 'Shell', 'MCP Tools', 'Error Recovery'],
+    caps: 'File / Shell / MCP',
     status: 'stable'
   },
   {
@@ -30,15 +30,23 @@ const SDLC_AGENTS: Array<{
     displayName: 'Review',
     sdlcPhase: 'Code Review',
     desc: '专业代码审查，分析代码质量、安全性、性能和最佳实践。',
-    capabilities: ['Git Integration', 'Linter', 'Auto Fix', 'Issue Tracking'],
+    caps: 'Git / Linter / AutoFix',
     status: 'stable'
+  },
+  {
+    name: 'TestAgent',
+    displayName: 'Testing',
+    sdlcPhase: 'Testing',
+    desc: '自动化测试代理，生成测试用例、执行测试、分析覆盖率。',
+    caps: 'Unit / E2E / Coverage',
+    status: 'coming'
   },
   {
     name: 'ChatDBAgent',
     displayName: 'ChatDB',
-    sdlcPhase: 'Testing & Data',
+    sdlcPhase: 'Data',
     desc: '数据库对话代理，支持 Text-to-SQL，自然语言查询数据。',
-    capabilities: ['Multi-DB', 'Text-to-SQL', 'Schema Analysis', 'Query Explain'],
+    caps: 'SQL / Schema / Query',
     status: 'stable'
   },
   {
@@ -46,8 +54,16 @@ const SDLC_AGENTS: Array<{
     displayName: 'WebEdit',
     sdlcPhase: 'Deployment',
     desc: '网页编辑代理，浏览网页、选择 DOM 元素、与页面交互。',
-    capabilities: ['DOM Selection', 'Element Tags', 'LLM Analysis', 'Source Mapping'],
+    caps: 'DOM / Browser / Mapping',
     status: 'beta'
+  },
+  {
+    name: 'OpsAgent',
+    displayName: 'Ops',
+    sdlcPhase: 'Operations',
+    desc: '运维监控代理，日志分析、性能监控、告警处理。',
+    caps: 'Logs / Metrics / Alerts',
+    status: 'coming'
   },
 ];
 
@@ -175,11 +191,7 @@ export const LandingPage: React.FC = () => {
                       </span>
                     </div>
                     <div className="xu-sdlc-desc">{agent.desc}</div>
-                    <div className="xu-agent-caps">
-                      {agent.capabilities.map((cap) => (
-                        <span key={cap} className="xu-agent-cap">{cap}</span>
-                      ))}
-                    </div>
+                    <div className="xu-sdlc-caps">{agent.caps}</div>
                   </div>
                   {index < SDLC_AGENTS.length - 1 && (
                     <div className="xu-sdlc-arrow" aria-hidden="true" />
