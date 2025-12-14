@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 
 // SDLC Agents - AI Agents mapped to Software Development Lifecycle phases
 const SDLC_AGENTS: Array<{
@@ -67,57 +69,51 @@ const SDLC_AGENTS: Array<{
   },
 ];
 
-// Platform List - All supported platforms
-const PLATFORM_LIST: Array<{ name: string; note: string; link?: string; usage?: string }> = [
+// Platform categories with emphasis
+const PLATFORM_CATEGORIES = [
   {
-    name: 'IntelliJ IDEA',
-    note: 'Jewel UI / Code Review / Remote Agent',
-    link: 'https://plugins.jetbrains.com/plugin/29223-autodev-experiment',
-    usage: 'AutoDev Experiment'
+    category: 'IDE',
+    highlight: true,
+    platforms: [
+      { name: 'IntelliJ IDEA', tech: 'Jewel UI', link: 'https://plugins.jetbrains.com/plugin/29223-autodev-experiment' },
+      { name: 'VSCode', tech: 'Extension', link: 'https://marketplace.visualstudio.com/items?itemName=Phodal.autodev' },
+    ]
   },
   {
-    name: 'VSCode',
-    note: 'Xiuper Agent Extension',
-    link: 'https://marketplace.visualstudio.com/items?itemName=Phodal.autodev',
-    usage: 'AutoDev'
+    category: 'Terminal',
+    highlight: true,
+    platforms: [
+      { name: 'CLI', tech: 'React Ink', usage: 'npm i -g @autodev/cli' },
+      { name: 'Server', tech: 'Ktor JVM', usage: 'Self-hosted' },
+    ]
   },
   {
-    name: 'CLI',
-    note: 'Node.js TUI (React/Ink)',
-    usage: 'npm i -g @autodev/cli'
+    category: 'Desktop & Mobile',
+    highlight: false,
+    platforms: [
+      { name: 'Desktop', tech: 'Compose', link: 'https://github.com/phodal/auto-dev/releases' },
+      { name: 'Android', tech: 'Compose', link: 'https://github.com/phodal/auto-dev/releases' },
+      { name: 'iOS', tech: 'SwiftUI', link: 'https://github.com/phodal/auto-dev/releases' },
+    ]
   },
   {
-    name: 'Web',
-    note: 'Browser Web App',
-    link: 'https://web.xiuper.com/',
-    usage: 'web.xiuper.com'
-  },
-  {
-    name: 'Desktop',
-    note: 'macOS / Windows / Linux',
-    link: 'https://github.com/phodal/auto-dev/releases',
-    usage: 'Compose Desktop'
-  },
-  {
-    name: 'Android',
-    note: 'Native Android',
-    link: 'https://github.com/phodal/auto-dev/releases',
-    usage: 'Compose Android'
-  },
-  {
-    name: 'iOS',
-    note: 'SwiftUI + KMP',
-    link: 'https://github.com/phodal/auto-dev/releases',
-    usage: 'Production Ready'
-  },
-  {
-    name: 'Server',
-    note: 'Ktor (JVM)',
-    usage: 'Self-hosted'
+    category: 'Web',
+    highlight: false,
+    platforms: [
+      { name: 'Browser', tech: 'React', link: 'https://web.xiuper.com/' },
+    ]
   },
 ];
 
 export const LandingPage: React.FC = () => {
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: 'start', slidesToScroll: 1 },
+    [Autoplay({ delay: 3000, stopOnInteraction: false })]
+  );
+
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+
   return (
     <div className="xu-page">
       <header className="xu-header">
@@ -127,7 +123,6 @@ export const LandingPage: React.FC = () => {
             <span className="xu-brand__text">Xiuper</span>
           </a>
           <nav className="xu-nav">
-            <a className="xu-nav__link" href="#sdlc">SDLC</a>
             <a className="xu-nav__link" href="#platforms">Platforms</a>
             <a className="xu-nav__link" href="https://github.com/phodal/auto-dev" target="_blank" rel="noreferrer">
               GitHub
@@ -137,97 +132,104 @@ export const LandingPage: React.FC = () => {
       </header>
 
       <main>
-        {/* Hero Section */}
+        {/* Hero + SDLC Combined Section */}
         <section className="xu-hero">
-          <div className="xu-container xu-hero__inner">
-            <div className="xu-hero__content">
+          <div className="xu-container">
+            <div className="xu-hero__top">
               <p className="xu-badge">AutoDev 3.0 - Xiuper</p>
               <h1 className="xu-hero__title">
-                AI-Native Development
-                <br />
-                <span className="xu-hero__highlight">Agent Framework</span>
+                <span className="xu-hero__highlight">让 AI 真正融入软件开发生命周期</span>
               </h1>
               <p className="xu-hero__subtitle">
-                Kotlin Multiplatform 驱动的全平台 AI Agent 框架。
-                Agent as Tool，SubAgent 架构，DevIns 声明式语言。
+                Kotlin Multiplatform 驱动的全平台 AI Agent 框架，覆盖 SDLC 全阶段。
               </p>
-              <div className="xu-hero__actions">
-                <a href="#sdlc" className="xu-btn xu-btn--primary">Explore Agents</a>
-                <a href="https://github.com/phodal/auto-dev" target="_blank" rel="noreferrer" className="xu-btn xu-btn--secondary">GitHub</a>
-              </div>
             </div>
 
-            <div className="xu-hero__visual" aria-hidden="true">
-              <div className="xu-orbit">
-                <div className="xu-orbit__ring" />
-                <div className="xu-orbit__ring xu-orbit__ring--2" />
-                <div className="xu-orbit__core">
-                  <div className="xu-orbit__x">X</div>
-                  <div className="xu-orbit__hint">Xiuper = Super Open</div>
+            {/* SDLC Carousel */}
+            <div className="xu-carousel">
+              <button className="xu-carousel__btn xu-carousel__btn--prev" onClick={scrollPrev} aria-label="Previous">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+
+              <div className="xu-carousel__viewport" ref={emblaRef}>
+                <div className="xu-carousel__container">
+                  {SDLC_AGENTS.map((agent) => (
+                    <div key={agent.name} className="xu-carousel__slide">
+                      <div className={`xu-agent-card xu-agent-card--${agent.status}`}>
+                        <div className="xu-agent-card__phase">{agent.sdlcPhase}</div>
+                        <div className="xu-agent-card__header">
+                          <span className="xu-agent-card__name">{agent.displayName}</span>
+                          <span className={`xu-agent-card__status xu-agent-card__status--${agent.status}`}>
+                            {agent.status}
+                          </span>
+                        </div>
+                        <p className="xu-agent-card__desc">{agent.desc}</p>
+                        <code className="xu-agent-card__caps">{agent.caps}</code>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
+
+              <button className="xu-carousel__btn xu-carousel__btn--next" onClick={scrollNext} aria-label="Next">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
             </div>
-          </div>
-        </section>
 
-        {/* SDLC Agents Section */}
-        <section id="sdlc" className="xu-section">
-          <div className="xu-container">
-            <h2 className="xu-section__title">让 AI 真正融入软件开发生命周期</h2>
-            <p className="xu-section__desc">
-              专业化的 AI Agent 覆盖 SDLC 各阶段，每个 Agent 都可作为 Tool 被其他 Agent 调用。
-            </p>
-
-            {/* SDLC Flow */}
-            <div className="xu-sdlc-flow">
-              {SDLC_AGENTS.map((agent, index) => (
+            {/* SDLC Timeline */}
+            <div className="xu-timeline">
+              {SDLC_AGENTS.map((agent, i) => (
                 <React.Fragment key={agent.name}>
-                  <div className={`xu-sdlc-card xu-sdlc-card--${agent.status}`}>
-                    <div className="xu-sdlc-phase">{agent.sdlcPhase}</div>
-                    <div className="xu-sdlc-header">
-                      <div className="xu-sdlc-name">{agent.displayName}</div>
-                      <span className={`xu-agent-status xu-agent-status--${agent.status}`}>
-                        {agent.status}
-                      </span>
-                    </div>
-                    <div className="xu-sdlc-desc">{agent.desc}</div>
-                    <div className="xu-sdlc-caps">{agent.caps}</div>
-                  </div>
-                  {index < SDLC_AGENTS.length - 1 && (
-                    <div className="xu-sdlc-arrow" aria-hidden="true" />
-                  )}
+                  <div className={`xu-timeline__dot xu-timeline__dot--${agent.status}`} title={agent.displayName} />
+                  {i < SDLC_AGENTS.length - 1 && <div className="xu-timeline__line" />}
                 </React.Fragment>
               ))}
+            </div>
+
+            <div className="xu-hero__actions">
+              <a href="https://github.com/phodal/auto-dev" target="_blank" rel="noreferrer" className="xu-btn xu-btn--primary">
+                Get Started
+              </a>
+              <a href="#platforms" className="xu-btn xu-btn--secondary">View Platforms</a>
             </div>
           </div>
         </section>
 
         {/* Platforms Section */}
-        <section id="platforms" className="xu-section xu-section--alt">
+        <section id="platforms" className="xu-section">
           <div className="xu-container">
-            <h2 className="xu-section__title">全平台覆盖</h2>
-            <p className="xu-section__desc">
-              Kotlin Multiplatform 驱动，一套核心逻辑，8 个平台复用。
-            </p>
-            <div className="xu-grid xu-grid--platforms">
-              {PLATFORM_LIST.map((p) => (
-                <div key={p.name} className="xu-card xu-card--platform">
-                  <div className="xu-card__title">{p.name}</div>
-                  <div className="xu-card__desc">{p.note}</div>
-                  {p.usage && (
-                    <div className="xu-platform-usage">{p.usage}</div>
-                  )}
-                  {p.link && (
-                    <a href={p.link} target="_blank" rel="noreferrer" className="xu-platform-link">
-                      View
-                    </a>
-                  )}
+            <h2 className="xu-section__title">Kotlin Multiplatform</h2>
+            <p className="xu-section__desc">一套核心逻辑，8 个平台复用</p>
+
+            <div className="xu-platforms">
+              {PLATFORM_CATEGORIES.map((cat) => (
+                <div key={cat.category} className={`xu-platform-group ${cat.highlight ? 'xu-platform-group--highlight' : ''}`}>
+                  <div className="xu-platform-group__header">{cat.category}</div>
+                  <div className="xu-platform-group__items">
+                    {cat.platforms.map((p) => (
+                      <div key={p.name} className="xu-platform-item">
+                        <span className="xu-platform-item__name">{p.name}</span>
+                        <span className="xu-platform-item__tech">{p.tech}</span>
+                        {p.link && (
+                          <a href={p.link} target="_blank" rel="noreferrer" className="xu-platform-item__link">
+                            Open
+                          </a>
+                        )}
+                        {p.usage && !p.link && (
+                          <code className="xu-platform-item__usage">{p.usage}</code>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
-
       </main>
 
       <footer className="xu-footer">
