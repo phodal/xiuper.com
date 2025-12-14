@@ -184,7 +184,7 @@ export const LandingPage: React.FC = () => {
                 <span className="xu-hero__slogan">Every Device.</span>
               </h1>
               <p className="xu-hero__subtitle">
-                Kotlin Multiplatform AI Agent Framework · 一套代码，覆盖 SDLC 全阶段，运行于所有设备
+                Kotlin Multiplatform AI Agent Framework · 统一平台，覆盖 SDLC 全阶段，运行于所有设备
               </p>
             </div>
 
@@ -282,17 +282,17 @@ export const LandingPage: React.FC = () => {
               <div className="xu-platform-stat">
                 <div className="xu-platform-stat__number">1</div>
                 <div className="xu-platform-stat__label">Platform</div>
-                <div className="xu-platform-stat__hint">One Codebase</div>
+                <div className="xu-platform-stat__hint">Unified Platform</div>
               </div>
               <div className="xu-platform-stat">
                 <div className="xu-platform-stat__number">7</div>
                 <div className="xu-platform-stat__label">Phases</div>
-                <div className="xu-platform-stat__hint">Full SDLC</div>
+                <div className="xu-platform-stat__hint">All Phases</div>
               </div>
               <div className="xu-platform-stat">
                 <div className="xu-platform-stat__number">8</div>
                 <div className="xu-platform-stat__label">Devices</div>
-                <div className="xu-platform-stat__hint">Every Platform</div>
+                <div className="xu-platform-stat__hint">Every Device</div>
               </div>
             </div>
           </div>

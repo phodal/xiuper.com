@@ -1,7 +1,7 @@
 # AutoDev Xiuper Landing Page
 
-> **One Codebase. Full SDLC. Every Device.**  
-> 一个代码库 · 全生命周期 · 跨全平台
+> **One Platform. All Phases. Every Device.**  
+> 统一平台 · 全开发阶段 · 跨全设备
 
 本仓库是 **AutoDev Xiuper** 的官方网站源码，基于 Vite + React + TypeScript 构建。
 
@@ -41,4 +41,4 @@ Xiuper（音：修朴）是 AutoDev 的代号版本，灵感来自 Windows Vista
 - ✅ 基于 Kotlin Multiplatform 重构
 - ✅ 统一 8 大平台的核心逻辑
 - ✅ 覆盖 SDLC 全生命周期（7 大阶段 Agent）
-- ✅ 品牌升级：One Codebase. Full SDLC. Every Device.
+- ✅ 品牌升级：One Platform. All Phases. Every Device.

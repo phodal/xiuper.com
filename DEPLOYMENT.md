@@ -1,6 +1,6 @@
 # AutoDev Xiuper 官网部署说明
 
-> **One Codebase. Full SDLC. Every Device.**
+> **One Platform. All Phases. Every Device.**
 
 ## 已完成
 
@@ -55,7 +55,7 @@ DNS 生效后（通常 10 分钟到 48 小时），访问：
 ## 站点功能
 
 ### Landing Page（默认 `/` 或 `/#/`）
-- **核心 Slogan**: One Codebase. Full SDLC. Every Device.
+- **核心 Slogan**: One Platform. All Phases. Every Device.
 - 展示 **AutoDev Xiuper** 全平台 AI Agent 生态
 - **7 大 SDLC Agent**: Knowledge、Coding、Review、Testing、ChatDB、WebEdit、Ops
 - **8 大平台支持**: IDEA、VSCode、CLI、Web、Desktop、Android、iOS、Server
@@ -92,9 +92,9 @@ GitHub Actions 会自动重新构建并部署。
 
 **版本特性**:
 - ✅ 品牌升级：AutoDev → AutoDev Xiuper
-- ✅ 核心 Slogan：One Codebase. Full SDLC. Every Device.
-- ✅ 完整的 8 平台支持（一个代码库）
-- ✅ 7 大 SDLC Agent 覆盖全生命周期
+- ✅ 核心 Slogan：One Platform. All Phases. Every Device.
+- ✅ 完整的 8 平台支持（统一平台）
+- ✅ 7 大 SDLC Agent 覆盖全开发阶段
 - ✅ Kotlin Multiplatform 架构展示
 
 ## 相关链接
