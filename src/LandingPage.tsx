@@ -69,39 +69,79 @@ const SDLC_AGENTS: Array<{
   },
 ];
 
-// Platform categories with emphasis
-const PLATFORM_CATEGORIES = [
+// All 8 platforms with detailed info
+const ALL_PLATFORMS = [
   {
+    name: 'IntelliJ IDEA',
     category: 'IDE',
-    highlight: true,
-    platforms: [
-      { name: 'IntelliJ IDEA', tech: 'Jewel UI', link: 'https://plugins.jetbrains.com/plugin/29223-autodev-experiment' },
-      { name: 'VSCode', tech: 'Extension', link: 'https://marketplace.visualstudio.com/items?itemName=Phodal.autodev' },
-    ]
+    tech: 'Jewel UI',
+    target: 'JVM',
+    desc: 'Code Review / Remote Agent',
+    link: 'https://plugins.jetbrains.com/plugin/29223-autodev-experiment',
+    featured: true
   },
   {
+    name: 'VSCode',
+    category: 'IDE',
+    tech: 'Extension',
+    target: 'JS/Node.js',
+    desc: 'Xiuper Agent Extension',
+    link: 'https://marketplace.visualstudio.com/items?itemName=Phodal.autodev',
+    featured: true
+  },
+  {
+    name: 'CLI',
     category: 'Terminal',
-    highlight: true,
-    platforms: [
-      { name: 'CLI', tech: 'React Ink', usage: 'npm i -g @autodev/cli' },
-      { name: 'Server', tech: 'Ktor JVM', usage: 'Self-hosted' },
-    ]
+    tech: 'React Ink',
+    target: 'JS/Node.js',
+    desc: 'Terminal User Interface',
+    usage: 'npm i -g @autodev/cli',
+    featured: true
   },
   {
-    category: 'Desktop & Mobile',
-    highlight: false,
-    platforms: [
-      { name: 'Desktop', tech: 'Compose', link: 'https://github.com/phodal/auto-dev/releases' },
-      { name: 'Android', tech: 'Compose', link: 'https://github.com/phodal/auto-dev/releases' },
-      { name: 'iOS', tech: 'SwiftUI', link: 'https://github.com/phodal/auto-dev/releases' },
-    ]
+    name: 'Web',
+    category: 'Browser',
+    tech: 'React',
+    target: 'JS/WASM',
+    desc: 'Browser Web App',
+    link: 'https://web.xiuper.com/',
+    featured: false
   },
   {
-    category: 'Web',
-    highlight: false,
-    platforms: [
-      { name: 'Browser', tech: 'React', link: 'https://web.xiuper.com/' },
-    ]
+    name: 'Desktop',
+    category: 'Desktop',
+    tech: 'Compose',
+    target: 'JVM',
+    desc: 'macOS / Windows / Linux',
+    link: 'https://github.com/phodal/auto-dev/releases',
+    featured: false
+  },
+  {
+    name: 'Android',
+    category: 'Mobile',
+    tech: 'Compose',
+    target: 'Android',
+    desc: 'Native Android App',
+    link: 'https://github.com/phodal/auto-dev/releases',
+    featured: false
+  },
+  {
+    name: 'iOS',
+    category: 'Mobile',
+    tech: 'SwiftUI',
+    target: 'iOS Native',
+    desc: 'SwiftUI + KMP Core',
+    link: 'https://github.com/phodal/auto-dev/releases',
+    featured: false
+  },
+  {
+    name: 'Server',
+    category: 'Backend',
+    tech: 'Ktor',
+    target: 'JVM',
+    desc: 'Self-hosted Server',
+    usage: 'Self-hosted',
+    featured: false
   },
 ];
 
@@ -123,7 +163,8 @@ export const LandingPage: React.FC = () => {
             <span className="xu-brand__text">Xiuper</span>
           </a>
           <nav className="xu-nav">
-            <a className="xu-nav__link" href="#platforms">Platforms</a>
+            <a className="xu-nav__link" href="#use">Use Xiuper</a>
+            <a className="xu-nav__link" href="#kmp">KMP</a>
             <a className="xu-nav__link" href="https://github.com/phodal/auto-dev" target="_blank" rel="noreferrer">
               GitHub
             </a>
@@ -194,13 +235,66 @@ export const LandingPage: React.FC = () => {
               <a href="https://github.com/phodal/auto-dev" target="_blank" rel="noreferrer" className="xu-btn xu-btn--primary">
                 Get Started
               </a>
-              <a href="#platforms" className="xu-btn xu-btn--secondary">View Platforms</a>
+              <a href="#use" className="xu-btn xu-btn--secondary">Use Xiuper</a>
             </div>
           </div>
         </section>
 
-        {/* Platforms Section */}
-        <section id="platforms" className="xu-section">
+        {/* Use Xiuper - 8 Platforms */}
+        <section id="use" className="xu-section">
+          <div className="xu-container">
+            <h2 className="xu-section__title">Use Xiuper Everywhere</h2>
+            <p className="xu-section__desc">
+              8 个平台，一套核心逻辑 · 从 IDE 到移动端，从终端到浏览器
+            </p>
+
+            {/* Platform Grid - All 8 */}
+            <div className="xu-platform-grid">
+              {ALL_PLATFORMS.map((platform) => (
+                <div key={platform.name} className={`xu-platform-card ${platform.featured ? 'xu-platform-card--featured' : ''}`}>
+                  <div className="xu-platform-card__header">
+                    <div className="xu-platform-card__name">{platform.name}</div>
+                    <div className="xu-platform-card__category">{platform.category}</div>
+                  </div>
+                  <div className="xu-platform-card__tech">
+                    <span className="xu-platform-card__tech-label">{platform.tech}</span>
+                    <span className="xu-platform-card__target">{platform.target}</span>
+                  </div>
+                  <div className="xu-platform-card__desc">{platform.desc}</div>
+                  <div className="xu-platform-card__footer">
+                    {platform.link && (
+                      <a href={platform.link} target="_blank" rel="noreferrer" className="xu-platform-card__link">
+                        Open →
+                      </a>
+                    )}
+                    {platform.usage && !platform.link && (
+                      <code className="xu-platform-card__usage">{platform.usage}</code>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Platform Count Highlight */}
+            <div className="xu-platform-stats">
+              <div className="xu-platform-stat">
+                <div className="xu-platform-stat__number">8</div>
+                <div className="xu-platform-stat__label">Platforms</div>
+              </div>
+              <div className="xu-platform-stat">
+                <div className="xu-platform-stat__number">5</div>
+                <div className="xu-platform-stat__label">Targets</div>
+              </div>
+              <div className="xu-platform-stat">
+                <div className="xu-platform-stat__number">1</div>
+                <div className="xu-platform-stat__label">Codebase</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* KMP Architecture Section */}
+        <section id="kmp" className="xu-section xu-section--alt">
           <div className="xu-container">
             <h2 className="xu-section__title">Kotlin Multiplatform 架构</h2>
             <p className="xu-section__desc">
@@ -238,31 +332,6 @@ export const LandingPage: React.FC = () => {
                   <div className="xu-kmp-target__impl">Platform.wasm.kt</div>
                 </div>
               </div>
-            </div>
-
-            {/* Platform Details */}
-            <div className="xu-platforms">
-              {PLATFORM_CATEGORIES.map((cat) => (
-                <div key={cat.category} className={`xu-platform-group ${cat.highlight ? 'xu-platform-group--highlight' : ''}`}>
-                  <div className="xu-platform-group__header">{cat.category}</div>
-                  <div className="xu-platform-group__items">
-                    {cat.platforms.map((p) => (
-                      <div key={p.name} className="xu-platform-item">
-                        <span className="xu-platform-item__name">{p.name}</span>
-                        <span className="xu-platform-item__tech">{p.tech}</span>
-                        {p.link && (
-                          <a href={p.link} target="_blank" rel="noreferrer" className="xu-platform-item__link">
-                            Open
-                          </a>
-                        )}
-                        {p.usage && !p.link && (
-                          <code className="xu-platform-item__usage">{p.usage}</code>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
             </div>
 
             {/* Technical Highlights */}
