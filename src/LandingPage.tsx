@@ -179,10 +179,12 @@ export const LandingPage: React.FC = () => {
             <div className="xu-hero__top">
               <p className="xu-badge">AutoDev 3.0 - Xiuper</p>
               <h1 className="xu-hero__title">
-                <span className="xu-hero__highlight">让 AI 真正融入软件开发生命周期</span>
+                <span className="xu-hero__slogan">One Platform.</span>
+                <span className="xu-hero__slogan">All Phases.</span>
+                <span className="xu-hero__slogan">Every Device.</span>
               </h1>
               <p className="xu-hero__subtitle">
-                Kotlin Multiplatform 驱动的全平台 AI Agent 框架，覆盖 SDLC 全阶段。
+                Kotlin Multiplatform AI Agent Framework · 一套代码，覆盖 SDLC 全阶段，运行于所有设备
               </p>
             </div>
 
@@ -243,9 +245,9 @@ export const LandingPage: React.FC = () => {
         {/* Use Xiuper - 8 Platforms */}
         <section id="use" className="xu-section">
           <div className="xu-container">
-            <h2 className="xu-section__title">Use Xiuper Everywhere</h2>
+            <h2 className="xu-section__title">Every Device</h2>
             <p className="xu-section__desc">
-              8 个平台，一套核心逻辑 · 从 IDE 到移动端，从终端到浏览器
+              一套核心逻辑，8 个平台无缝运行 · IDE · Terminal · Desktop · Mobile · Web
             </p>
 
             {/* Platform Grid - All 8 */}
@@ -278,16 +280,19 @@ export const LandingPage: React.FC = () => {
             {/* Platform Count Highlight */}
             <div className="xu-platform-stats">
               <div className="xu-platform-stat">
-                <div className="xu-platform-stat__number">8</div>
-                <div className="xu-platform-stat__label">Platforms</div>
-              </div>
-              <div className="xu-platform-stat">
-                <div className="xu-platform-stat__number">5</div>
-                <div className="xu-platform-stat__label">Targets</div>
-              </div>
-              <div className="xu-platform-stat">
                 <div className="xu-platform-stat__number">1</div>
-                <div className="xu-platform-stat__label">Codebase</div>
+                <div className="xu-platform-stat__label">Platform</div>
+                <div className="xu-platform-stat__hint">One Codebase</div>
+              </div>
+              <div className="xu-platform-stat">
+                <div className="xu-platform-stat__number">7</div>
+                <div className="xu-platform-stat__label">Phases</div>
+                <div className="xu-platform-stat__hint">Full SDLC</div>
+              </div>
+              <div className="xu-platform-stat">
+                <div className="xu-platform-stat__number">8</div>
+                <div className="xu-platform-stat__label">Devices</div>
+                <div className="xu-platform-stat__hint">Every Platform</div>
               </div>
             </div>
           </div>
@@ -296,9 +301,9 @@ export const LandingPage: React.FC = () => {
         {/* KMP Architecture Section */}
         <section id="kmp" className="xu-section xu-section--alt">
           <div className="xu-container">
-            <h2 className="xu-section__title">Kotlin Multiplatform 架构</h2>
+            <h2 className="xu-section__title">One Platform Architecture</h2>
             <p className="xu-section__desc">
-              基于 expect/actual 模式的跨平台实现，共享核心逻辑，平台特定优化
+              Kotlin Multiplatform · expect/actual 模式 · 共享核心逻辑 · 平台特定优化
             </p>
 
             {/* Architecture Overview */}

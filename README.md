@@ -1,9 +1,16 @@
-# xiuper.com Landing (mpp-web)
+# AutoDev Xiuper Landing Page
 
-本目录基于现有 `mpp-web`（Vite + React）实现 **`www.xiuper.com` 的 landing page**，并保留原来的 Web UI（用于演示 `mpp-core`）：
+> **One Codebase. Full SDLC. Every Device.**  
+> 一个代码库 · 全生命周期 · 跨全平台
 
-- 访问 **Landing**：`/#/`
-- 访问 **Web UI**：`/#/app`
+本仓库是 **AutoDev Xiuper** 的官方网站源码，基于 Vite + React + TypeScript 构建。
+
+**AutoDev Xiuper** 是 AI 原生的全生命周期开发平台，基于 Kotlin Multiplatform 架构，覆盖 SDLC 7 大阶段（Requirements → Development → Review → Testing → Data → Deployment → Operations），支持 8 大平台（IDEA、VSCode、CLI、Web、Desktop、Android、iOS、Server）。
+
+## 访问地址
+
+- **Landing Page**：`/#/` 或 https://www.xiuper.com/
+- **Web UI**：`/#/app` 或 https://web.xiuper.com/
 
 ## 本地开发
 
@@ -25,3 +32,13 @@ npm run build
 
 - `public/CNAME` 已设置为 `www.xiuper.com`，适用于 GitHub Pages 自定义域名。
 - 如果你使用 Vercel/Cloudflare Pages，也可以保留该文件（不影响构建产物）。
+
+## 版本说明
+
+当前版本：**AutoDev Xiuper Edition** (v3.0.0-xiuper)
+
+Xiuper（音：修朴）是 AutoDev 的代号版本，灵感来自 Windows Vista。Xiuper 标志着 AutoDev 进入全平台时代：
+- ✅ 基于 Kotlin Multiplatform 重构
+- ✅ 统一 8 大平台的核心逻辑
+- ✅ 覆盖 SDLC 全生命周期（7 大阶段 Agent）
+- ✅ 品牌升级：One Codebase. Full SDLC. Every Device.

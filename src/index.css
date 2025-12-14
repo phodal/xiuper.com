@@ -785,7 +785,59 @@ body {
 /* Hero Top */
 .xu-hero__top {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 48px;
+}
+
+.xu-hero__title {
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1.2;
+  margin: 16px 0 24px;
+  color: rgba(255, 255, 255, 0.98);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.xu-hero__slogan {
+  display: block;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.95), rgba(236, 72, 153, 0.9));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: fadeInUp 0.8s ease-out backwards;
+}
+
+.xu-hero__slogan:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.xu-hero__slogan:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.xu-hero__slogan:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.xu-hero__subtitle {
+  font-size: 16px;
+  color: rgba(229, 231, 235, 0.75);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-weight: 500;
 }
 
 .xu-hero__actions {
@@ -1264,10 +1316,17 @@ body {
 
 .xu-platform-stat__label {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 4px;
+}
+
+.xu-platform-stat__hint {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 /* Technical Highlights */
@@ -1327,6 +1386,9 @@ body {
   .xu-nav {
     display: none;
   }
+  .xu-hero__title {
+    font-size: 44px;
+  }
   .xu-carousel__slide {
     flex: 0 0 260px;
   }
@@ -1369,6 +1431,12 @@ body {
 }
 
 @media (max-width: 640px) {
+  .xu-hero__title {
+    font-size: 36px;
+  }
+  .xu-hero__subtitle {
+    font-size: 14px;
+  }
   .xu-platform-grid {
     grid-template-columns: 1fr;
   }

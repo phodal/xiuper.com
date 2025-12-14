@@ -1,7 +1,7 @@
 {
   "name": "@autodev/web",
-  "version": "0.1.0",
-  "description": "AutoDev Web UI - Browser-based AI development assistant",
+  "version": "3.0.0-xiuper",
+  "description": "AutoDev Xiuper - One Platform. All Phases. Every Device. AI-native development platform powered by Kotlin Multiplatform.",
   "type": "module",
   "packageManager": "pnpm@10.20.0",
   "engines": {
