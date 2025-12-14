@@ -179,9 +179,7 @@ export const LandingPage: React.FC = () => {
             <div className="xu-hero__top">
               <p className="xu-badge">AutoDev 3.0 - Xiuper</p>
               <h1 className="xu-hero__title">
-                <span className="xu-hero__slogan">One Platform.</span>
-                <span className="xu-hero__slogan">All Phases.</span>
-                <span className="xu-hero__slogan">Every Device.</span>
+                <span className="xu-hero__slogan">One Platform, All Phases, Every Device.</span>
               </h1>
               <p className="xu-hero__subtitle">
                 Kotlin Multiplatform AI Agent Framework · 统一平台，覆盖 SDLC 全阶段，运行于所有设备
@@ -339,34 +337,100 @@ export const LandingPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Technical Highlights */}
-            <div className="xu-tech-highlights">
-              <div className="xu-tech-card">
-                <div className="xu-tech-card__icon">🎯</div>
-                <div className="xu-tech-card__title">expect/actual</div>
-                <div className="xu-tech-card__desc">
-                  平台抽象机制，commonMain 定义接口，各平台实现细节
+            {/* Core Modules */}
+            <div className="xu-core-modules">
+              <div className="xu-module-card xu-module-card--primary">
+                <div className="xu-module-card__header">
+                  <div className="xu-module-card__icon">🧠</div>
+                  <div className="xu-module-card__title">mpp-core</div>
+                </div>
+                <div className="xu-module-card__subtitle">Agent Framework Core</div>
+                <div className="xu-module-card__desc">
+                  跨平台 AI Agent 核心引擎 · Koog LLM Service · Tool Registry · Agent as Tool 架构
+                </div>
+                <div className="xu-module-card__features">
+                  <span className="xu-feature-tag">CodingAgent</span>
+                  <span className="xu-feature-tag">SubAgent System</span>
+                  <span className="xu-feature-tag">Tool Orchestrator</span>
+                  <span className="xu-feature-tag">MCP Protocol</span>
                 </div>
               </div>
-              <div className="xu-tech-card">
-                <div className="xu-tech-card__icon">🔧</div>
-                <div className="xu-tech-card__title">Ktor Client</div>
-                <div className="xu-tech-card__desc">
-                  多引擎支持：OkHttp (JVM/Android) · Darwin (iOS) · JS Engine
+
+              <div className="xu-module-card">
+                <div className="xu-module-card__header">
+                  <div className="xu-module-card__icon">📝</div>
+                  <div className="xu-module-card__title">DevIns Language</div>
+                </div>
+                <div className="xu-module-card__subtitle">Declarative AI Instruction DSL</div>
+                <div className="xu-module-card__desc">
+                  声明式 AI 指令语言 · Lexer/Parser/Compiler · 跨平台编译 · 支持命令/变量/Agent 调用
+                </div>
+                <div className="xu-module-card__features">
+                  <span className="xu-feature-tag">@agent</span>
+                  <span className="xu-feature-tag">/command</span>
+                  <span className="xu-feature-tag">$variable</span>
+                  <span className="xu-feature-tag">FrontMatter</span>
                 </div>
               </div>
-              <div className="xu-tech-card">
-                <div className="xu-tech-card__icon">📦</div>
-                <div className="xu-tech-card__title">Compose UI</div>
-                <div className="xu-tech-card__desc">
-                  声明式 UI，Desktop/Android/iOS 共享组件，平台特定适配
+
+              <div className="xu-module-card">
+                <div className="xu-module-card__header">
+                  <div className="xu-module-card__icon">🎨</div>
+                  <div className="xu-module-card__title">NanoDSL (xiuper-ui)</div>
+                </div>
+                <div className="xu-module-card__subtitle">AI-Native UI Generation DSL</div>
+                <div className="xu-module-card__desc">
+                  面向 LLM 的 UI DSL · Python 风格缩进 · 低 Token 消耗 · 跨平台渲染 (Compose/React/HTML)
+                </div>
+                <div className="xu-module-card__features">
+                  <span className="xu-feature-tag">VStack/HStack</span>
+                  <span className="xu-feature-tag">Card/Button</span>
+                  <span className="xu-feature-tag">NanoDSLAgent</span>
+                  <span className="xu-feature-tag">Multi-Renderer</span>
                 </div>
               </div>
-              <div className="xu-tech-card">
-                <div className="xu-tech-card__icon">🌐</div>
-                <div className="xu-tech-card__title">TypeScript 互操作</div>
-                <div className="xu-tech-card__desc">
-                  自动生成 .d.ts 定义，UMD 模块格式，Node.js/Browser 双支持
+
+              <div className="xu-module-card">
+                <div className="xu-module-card__header">
+                  <div className="xu-module-card__icon">🖼️</div>
+                  <div className="xu-module-card__title">mpp-ui</div>
+                </div>
+                <div className="xu-module-card__subtitle">Compose Multiplatform UI</div>
+                <div className="xu-module-card__desc">
+                  跨平台 UI 框架 · Compose Desktop/Android/iOS · React Ink CLI · Material 3 设计系统
+                </div>
+                <div className="xu-module-card__features">
+                  <span className="xu-feature-tag">Compose MP</span>
+                  <span className="xu-feature-tag">React Ink</span>
+                  <span className="xu-feature-tag">Material 3</span>
+                  <span className="xu-feature-tag">FileChooser</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Technical Foundation */}
+            <div className="xu-tech-foundation">
+              <div className="xu-foundation-title">Technical Foundation</div>
+              <div className="xu-foundation-items">
+                <div className="xu-foundation-item">
+                  <div className="xu-foundation-item__label">expect/actual</div>
+                  <div className="xu-foundation-item__desc">平台抽象机制</div>
+                </div>
+                <div className="xu-foundation-item">
+                  <div className="xu-foundation-item__label">kotlinx.serialization</div>
+                  <div className="xu-foundation-item__desc">跨平台序列化</div>
+                </div>
+                <div className="xu-foundation-item">
+                  <div className="xu-foundation-item__label">kotlinx.coroutines</div>
+                  <div className="xu-foundation-item__desc">异步协程支持</div>
+                </div>
+                <div className="xu-foundation-item">
+                  <div className="xu-foundation-item__label">Ktor Client</div>
+                  <div className="xu-foundation-item__desc">多引擎 HTTP</div>
+                </div>
+                <div className="xu-foundation-item">
+                  <div className="xu-foundation-item__label">TypeScript Interop</div>
+                  <div className="xu-foundation-item__desc">JS/TS 互操作</div>
                 </div>
               </div>
             </div>
