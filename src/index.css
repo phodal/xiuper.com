@@ -326,6 +326,33 @@ body {
   max-width: 70ch;
 }
 
+/* Screenshot Section */
+.xu-section--screenshot {
+  padding: 64px 0;
+}
+
+.xu-screenshot {
+  margin-top: 40px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.xu-screenshot__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.xu-screenshot:hover .xu-screenshot__image {
+  transform: scale(1.02);
+}
+
 .xu-grid {
   margin-top: 18px;
   display: grid;

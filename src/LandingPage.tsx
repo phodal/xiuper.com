@@ -243,6 +243,23 @@ export const LandingPage: React.FC = () => {
           </div>
         </section>
 
+        {/* Screenshot Preview Section */}
+        <section className="xu-section xu-section--screenshot">
+          <div className="xu-container">
+            <h2 className="xu-section__title">See Xiuper in Action</h2>
+            <p className="xu-section__desc">
+              跨平台 AI Agent 开发助理，统一的界面体验
+            </p>
+            <div className="xu-screenshot">
+              <img
+                src="/screenshot.png"
+                alt="Xiuper Screenshot - AI Agent Development Assistant"
+                className="xu-screenshot__image"
+              />
+            </div>
+          </div>
+        </section>
+
         {/* Use Xiuper - 8 Platforms */}
         <section id="use" className="xu-section">
           <div className="xu-container">
