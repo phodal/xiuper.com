@@ -323,39 +323,18 @@ export const LandingPage: React.FC = () => {
             <p className="xu-section__desc">
               Kotlin Multiplatform · expect/actual 模式 · 共享核心逻辑 · 平台特定优化
             </p>
+          </div>
 
-            {/* Architecture Overview */}
-            <div className="xu-kmp-arch">
-              <div className="xu-kmp-layer xu-kmp-layer--common">
-                <div className="xu-kmp-layer__label">commonMain</div>
-                <div className="xu-kmp-layer__desc">
-                  共享代码 · Agent 核心 · DevIns 语言 · MCP 协议 · YAML 工具
-                </div>
-              </div>
-              <div className="xu-kmp-arrow-down" />
-              <div className="xu-kmp-targets">
-                <div className="xu-kmp-target">
-                  <div className="xu-kmp-target__name">JVM</div>
-                  <div className="xu-kmp-target__impl">Platform.jvm.kt</div>
-                </div>
-                <div className="xu-kmp-target">
-                  <div className="xu-kmp-target__name">Android</div>
-                  <div className="xu-kmp-target__impl">Platform.android.kt</div>
-                </div>
-                <div className="xu-kmp-target">
-                  <div className="xu-kmp-target__name">iOS</div>
-                  <div className="xu-kmp-target__impl">Platform.ios.kt</div>
-                </div>
-                <div className="xu-kmp-target">
-                  <div className="xu-kmp-target__name">JS</div>
-                  <div className="xu-kmp-target__impl">Platform.js.kt</div>
-                </div>
-                <div className="xu-kmp-target">
-                  <div className="xu-kmp-target__name">WASM</div>
-                  <div className="xu-kmp-target__impl">Platform.wasm.kt</div>
-                </div>
-              </div>
-            </div>
+          {/* Architecture Overview - Full Width */}
+          <div className="xu-kmp-arch">
+            <img
+              src="/xiuper-arch.svg"
+              alt="Xiuper Platform Architecture - Kotlin Multiplatform"
+              className="xu-arch-diagram"
+            />
+          </div>
+
+          <div className="xu-container">
 
             {/* Core Modules */}
             <div className="xu-core-modules">

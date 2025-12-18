@@ -671,14 +671,11 @@ body {
 
 /* Architecture Diagram */
 .xu-arch-diagram {
-  margin-top: 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 20px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+  padding: 0;
 }
 
 .xu-arch-layer {
@@ -1085,10 +1082,17 @@ body {
 /* KMP Architecture */
 .xu-kmp-arch {
   margin: 40px 0;
-  padding: 32px;
-  border-radius: 20px;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(236, 72, 153, 0.06));
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  padding: 0;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .xu-kmp-layer {
@@ -1530,7 +1534,11 @@ body {
     max-width: 30px;
   }
   .xu-kmp-arch {
-    padding: 24px 20px;
+    margin: 32px 0;
+  }
+  .xu-arch-diagram {
+    width: 100%;
+    height: auto;
   }
   .xu-kmp-targets {
     gap: 8px;
